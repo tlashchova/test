@@ -16,8 +16,6 @@ with open(file1, 'w') as f1, open(file2, 'w') as f2:
     for archive in archives:
         zf = zipfile.ZipFile(os.path.join(path, archive), 'r')
         for name in zf.namelist():
-            if name.endswith('/'):
-                continue
             f = zf.open(name)
             e = ET.parse(f).getroot()
             id = e[0].attrib['value']
